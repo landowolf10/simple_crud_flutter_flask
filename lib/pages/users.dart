@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
+import 'package:simple_crud_flask/pages/registro_usuarios.dart';
 
 List<String> precioProducto = new List<String>();
 
@@ -47,13 +48,18 @@ class UsersState extends State<Users> {
                                 height: 80,
                               ),
                               Text(
-                                'Crear usuario',
+                                'Registrar usuario',
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white),
                               ),
                             ],
                           ),
-                          onPressed: () {}),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext ctx) => RegisterUsers()));
+                          }),
                     ),
                     SizedBox(width: 50),
                     ButtonTheme(

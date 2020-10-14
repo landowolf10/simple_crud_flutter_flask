@@ -1,9 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'package:simple_crud_flask/pages/dialogos.dart';
+import 'package:simple_crud_flask/pages/models/user_model.dart';
+
+import 'users.dart';
 
 class RegisterUsers extends StatefulWidget {
   @override
@@ -12,7 +13,6 @@ class RegisterUsers extends StatefulWidget {
 
 class RegisterUsersState extends State<RegisterUsers>
     with TickerProviderStateMixin {
-
   TextEditingController nombreController = new TextEditingController();
   TextEditingController apController = new TextEditingController();
   TextEditingController amController = new TextEditingController();
@@ -20,25 +20,7 @@ class RegisterUsersState extends State<RegisterUsers>
 
   bool respuesta = false;
   int credito = 0;
-
-  void addClient() async {
-    var url = "http://10.0.2.2:5000/users";
-
-    final response = await http.post(url,
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8'
-        },
-        body: jsonEncode(<String, String>{
-          "nombre": nombreController.text,
-          "apellido_paterno": apController.text,
-          "apellido_materno": amController.text,
-          "telefono": telefonoController.text
-        }));
-
-    print(response.statusCode);
-
-    if (response.statusCode == 200) respuesta = true;
-  }
+  String nombreData, apData, amData, telefonoData;
 
   @override
   Widget build(BuildContext context) {
@@ -173,8 +155,6 @@ class RegisterUsersState extends State<RegisterUsers>
                 color: Colors.red,
                 child: Text('REGISTRAR', style: TextStyle(color: Colors.white)),
                 onPressed: () async {
-                  print(respuesta);
-
                   Dialogos dialogo = new Dialogos();
 
                   if (nombreController.text == "" ||
@@ -192,15 +172,20 @@ class RegisterUsersState extends State<RegisterUsers>
 
                       if (result.isNotEmpty &&
                           result[0].rawAddress.isNotEmpty) {
-                        addClient();
+                        nombreData = nombreController.text;
+                        apData = apController.text;
+                        amData = amController.text;
+                        telefonoData = telefonoController.text;
+
+                        User user = new User();
+
+                        user.addUser(nombreData, apData, amData, telefonoData);
                         dialogo.insertedUserDialog(context);
                       }
                     } on SocketException catch (_) {
                       dialogo.connectionDialog(context);
                     }
                   }
-                  /*Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Botanax()));*/
                 },
               ),
             ),
@@ -213,12 +198,12 @@ class RegisterUsersState extends State<RegisterUsers>
                   borderRadius: BorderRadius.circular(50),
                 ),
                 color: Colors.red,
-                child: Text('Login', style: TextStyle(color: Colors.white)),
+                child: Text('Regresar', style: TextStyle(color: Colors.white)),
                 onPressed: () {
-                  /*Navigator.push(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );*/
+                    MaterialPageRoute(builder: (context) => Users()),
+                  );
                 },
               ),
             ),

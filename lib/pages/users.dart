@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:http/http.dart' as http;
 import 'package:simple_crud_flask/pages/registro_usuarios.dart';
 
 List<String> precioProducto = new List<String>();
@@ -33,65 +30,50 @@ class UsersState extends State<Users> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     ButtonTheme(
-                      minWidth: 150.0,
-                      height: 150.0,
-                      child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          color: Colors.red,
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "icons/entradas.png",
-                                width: 80,
-                                height: 80,
+                        minWidth: 150.0,
+                        height: 150.0,
+                        child: Flexible(
+                          child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              Text(
+                              color: Colors.red,
+                              child: Text(
                                 'Registrar usuario',
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white),
                               ),
-                            ],
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (BuildContext ctx) => RegisterUsers()));
-                          }),
-                    ),
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext ctx) =>
+                                            RegisterUsers()));
+                              }),
+                        )),
                     SizedBox(width: 50),
                     ButtonTheme(
-                      minWidth: 150.0,
-                      height: 150.0,
-                      child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          color: Colors.red,
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "icons/platillos.png",
-                                width: 80,
-                                height: 80,
+                        minWidth: 150.0,
+                        height: 150.0,
+                        child: Flexible(
+                          child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              Text(
+                              color: Colors.red,
+                              child: Text(
                                 'Mostrar usuario',
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white),
                               ),
-                            ],
-                          ),
-                          onPressed: () {
-                            /*Navigator.pushReplacement(
+                              onPressed: () {
+                                /*Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext ctx) =>
                                         Platillos()));*/
-                          }),
-                    ),
+                              }),
+                        )),
                   ],
                 ),
                 SizedBox(height: 50),
@@ -100,59 +82,43 @@ class UsersState extends State<Users> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     ButtonTheme(
-                      minWidth: 150.0,
-                      height: 150.0,
-                      child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          color: Colors.red,
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "icons/bebidas.png",
-                                width: 80,
-                                height: 80,
+                        minWidth: 150.0,
+                        height: 150.0,
+                        child: Flexible(
+                          child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              Text(
+                              color: Colors.red,
+                              child: Text(
                                 'Actualizar usuario',
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white),
                               ),
-                            ],
-                          ),
-                          onPressed: () {
-                            /*Navigator.pushReplacement(
+                              onPressed: () {
+                                /*Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext ctx) => Bebidas()));*/
-                          }),
-                    ),
+                              }),
+                        )),
                     SizedBox(width: 50),
                     ButtonTheme(
-                      minWidth: 150.0,
-                      height: 150.0,
-                      child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          color: Colors.red,
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "icons/postres.png",
-                                width: 80,
-                                height: 80,
+                        minWidth: 150.0,
+                        height: 150.0,
+                        child: Flexible(
+                          child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                              Text(
+                              color: Colors.red,
+                              child: Text(
                                 'Eliminar usuario',
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white),
                               ),
-                            ],
-                          ),
-                          onPressed: () {}),
-                    ),
+                              onPressed: () {}),
+                        )),
                   ],
                 )
               ],
